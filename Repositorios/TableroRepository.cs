@@ -10,7 +10,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
     public class TableroRepository: ITableroRepository
     {
         private string cadenaConexion = "Data Source=DB/kanban.db;Cache=Shared";
-        public void Create(Tablero tablero)
+        public void CreateBoard(Tablero tablero)
         {
             var query = $"INSERT INTO Tablero (id,id_usuario_propietario, nombre,descripcion) VALUES (@id,@idusu,@nombre,@descripcion)";
             using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
@@ -29,7 +29,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
                 connection.Close();   
             }
         }
-        public void Update (int id,Tablero tablero)
+        public void UpdateBoard (int id,Tablero tablero)
         {
             var query = $"UPDATE Tablero SET id_usuario_propietario = '@idusu',nombre = '@nombre',descripcion = '@descripcion' WHERE id = '{id}';";
 
@@ -46,7 +46,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
                 connection.Close();   
             }
         }
-        public Tablero GetById(int idTablero)
+        public Tablero GetByIdBoard(int idTablero)
         {
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
             var tablero = new Tablero();
@@ -68,7 +68,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
 
             return (tablero);
         }
-        public List<Tablero> GetAll()
+        public List<Tablero> GetAllBoard()
         {
             var queryString = @"SELECT * FROM Tablero;";
             List<Tablero> tableros = new List<Tablero>();
@@ -93,7 +93,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
             }
             return tableros;
         }
-        public List<Tablero> GetAllByUser(int id)
+        public List<Tablero> GetAllByIdBoard(int id)
         {
             var queryString = @"SELECT * FROM Tablero;";
             List<Tablero> tableros = new List<Tablero>();
@@ -123,7 +123,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
             }
             return tableros;
         }
-        public void Remove(int id)
+        public void RemoveBoard(int id)
         {
             
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);

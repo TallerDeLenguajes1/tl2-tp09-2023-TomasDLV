@@ -15,25 +15,25 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
 
         
 
-        public void Create(Usuario usuario)
+        public void CreateUser(Usuario usuario)
         {
-            var query = $"INSERT INTO Usuario (id, nombre_de_usuario) VALUES (@uid,@name)";
+            var query = $"INSERT INTO Usuario (nombre_de_usuario) VALUES (@name)";
             using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
             {
 
-                connection.Open();
+                
                 var command = new SQLiteCommand(query, connection);
 
-                command.Parameters.Add(new SQLiteParameter("@uid", usuario.Id));
+                //command.Parameters.Add(new SQLiteParameter("@uid", usuario.Id));
                 command.Parameters.Add(new SQLiteParameter("@name", usuario.Nombre_de_usuario));
-                
+                connection.Open();
                 command.ExecuteNonQuery();
 
                 connection.Close();   
             }
         }
         
-        public void Update (int id,Usuario usuario)
+        public void UpdateUser (int id,Usuario usuario)
         {
             var query = $"UPDATE Usuario SET nombre_de_usuario = '@nombre' WHERE id = '{id}';";
 
@@ -48,7 +48,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
                 connection.Close();   
             }
         }
-        public List<Usuario> GetAll()
+        public List<Usuario> GetAllUser()
         {
             var queryString = @"SELECT * FROM Usuario;";
             List<Usuario> usuarios = new List<Usuario>();
@@ -71,7 +71,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
             }
             return usuarios;
         }
-        public Usuario GetById(int idUsuario)
+        public Usuario GetByIdUser(int idUsuario)
         {
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
             var usuario = new Usuario();
@@ -92,7 +92,7 @@ namespace tl2_tp09_2023_TomasDLV.Repositorios
             return (usuario);
         }
 
-        public void Remove(int id)
+        public void RemoveUser(int id)
         {
             
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);

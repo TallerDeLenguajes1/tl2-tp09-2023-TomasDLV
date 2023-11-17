@@ -31,6 +31,10 @@ namespace tl2_tp09_2023_TomasDLV.Models
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Color { get => color; set => color = value; }
         public int Id_usuario_asignado { get => id_usuario_asignado; set => id_usuario_asignado = value; }
+        public EstadoTarea Estado { get => estado; set => estado = value; }
+
+        public Tarea(){}
+        
         // public Tarea(int Id, int IdTablero, string Nombre, int Estado, string Descripcion, string Color, int Id_usuario_asignado)
         // {
         //     id = Id;
